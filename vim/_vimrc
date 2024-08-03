@@ -1,0 +1,76 @@
+activar números de línea relativos
+set relativenumber
+set number
+
+" Establecer el esquema de color
+colorscheme slate
+
+" Configuración de identación
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+
+" Activar el resaltado de sintaxis
+syntax on
+
+" Mostrar la línea de comando mientras se digita un comando incompleto
+" set showcmd
+
+" Resaltar la búsqueda
+set hlsearch
+
+" Ignorar el caso en las búsquedas
+set ignorecase
+
+" Hacer la búsqueda sensible al caso si contiene mayúsculas
+set smartcase
+
+" Deshabilitar los sonidos de error
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" Habilitar el portapapeles del sistema
+set clipboard=unnamedplus
+
+" Establecer tiempo de espera para secuencias de teclas
+set timeoutlen=500
+
+" Mejor manejo de la copia y pega entre vim y otras aplicaciones
+set pastetoggle=<F2>
+
+" Mejor manejo de la deshacer
+set undofile
+
+" Mostrar el número de línea y columna en la barra de estado
+set ruler
+
+" Activar el modo de línea de comando en tiempo real
+" set inccommand=split
+
+" Establecer el tamaño de las ventanas divididas
+set equalalways
+set splitright
+set splitbelow
+
+" Mejorar la experiencia de búsqueda
+" set incsearch
+
+" Activar el soporte para archivos
+filetype plugin on
+filetype indent on
+
+" Mejorar el plegado de código
+set foldmethod=syntax
+set foldlevelstart=99
+
+" Configuración para archivos Python
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" Otras configuraciones
+set mouse=a  " Activar el soporte del ratón
+set scrolloff=8  " Mantener 8 líneas visibles por encima y por debajo del cursor
+set signcolumn=yes  " Siempre mostrar la columna de signos
+
