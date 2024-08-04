@@ -1,4 +1,9 @@
 # Configurations for various programs
 
-#### Each folder has its own README.md with end directories and furher setup if needed
+ Each folder has its own README.md with end directories and furher setup if needed
 
+## Configs
+- Lazyvim
+- Vim
+- Powershell
+  
