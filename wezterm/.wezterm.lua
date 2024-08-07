@@ -20,6 +20,12 @@ config.hide_tab_bar_if_only_one_tab = true
 
 -- You can also change the window decorations:
 config.window_decorations = "RESIZE"
+config.window_padding = {
+	-- top = 0,
+	right = 0,
+	bottom = 0,
+	left = 0,
+}
 
 config.keys = {
 	{
