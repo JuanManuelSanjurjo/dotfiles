@@ -4,19 +4,39 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
+config.initial_cols = 140
+config.initial_rows = 30
 config.color_scheme = "catppuccin-mocha"
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
 config.default_prog = { "powershell.exe" }
 config.window_background_opacity = 0.95
-config.font_size = 14
-
+config.text_background_opacity = 0.3
+config.font_size = 12
+config.window_frame = {
+	-- inactive_titlebar_bg = "#353535",
+	active_titlebar_bg = "#1f1730",
+	inactive_titlebar_fg = "#cccccc",
+	-- active_titlebar_fg = "#ffffff",
+	-- inactive_titlebar_border_bottom = "#2b2042",
+	-- active_titlebar_border_bottom = "#2b2042",
+	-- button_fg = "purple",
+	-- button_bg = "#2b2042",
+	-- button_hover_fg = "#ffffff",
+	-- button_hover_bg = "#3b3052",
+	-- border_left_width = "0.5cell",
+	-- border_right_width = "0.5cell",
+	-- border_bottom_height = "0.25cell",
+	-- border_top_height = "0.25cell",
+	-- border_left_color = "purple",
+	-- border_right_color = "purple",
+	-- border_bottom_color = "purple",
+	-- border_top_color = "purple",
+}
 -- desabilita la barra de pestañas
 -- config.enable_tab_bar = false
--- config.use_fancy_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = true
+-- config.tab_bar_at_bottom = true
+-- config.hide_tab_bar_if_only_one_tab = true
 
 -- You can also change the window decorations:
 config.window_decorations = "RESIZE"
@@ -26,7 +46,6 @@ config.window_padding = {
 	bottom = 0,
 	left = 0,
 }
-
 config.keys = {
 	{
 		key = "F11",
@@ -35,9 +54,6 @@ config.keys = {
 	},
 }
 
--- 	tab_bar = {
--- 		background = "#1e1e2e",
--- 	},
--- }
--- and finally, return the configuration to wezterm
+--  return the configuration to wezterm
 return config
+
