@@ -39,9 +39,8 @@ if (Test-Path($ChocolateyProfile)) {
 function f {
   fzf --reverse --border=rounded --height=95%  --preview 'bat --color=always --style=numbers --line-range :500 {}' --preview-window right:50% $args
 }
-
-function fdir {
-    fd --type directory --follow --hidden --exclude .git | fzf --prompt 'Directory> '
+function batf{
+    bat $(f)
 }
 # Alias para abrir archivos con vim/nvim usando fzf
 function vimf {
@@ -50,6 +49,38 @@ function vimf {
 
 function nvimf {
     nvim $(f)
+}
+function cdf{
+  cd (Split-Path -Path (f) -Parent)
+}
+
+# help or man function to explain function above
+function macros {
+    # Crea una lista de objetos personalizados
+    $table = @()
+    $usuario = $env:USERNAME
+    # Agrega filas a la tabla
+    Write-Host "Available macros for <$usuario> PowerShell" -ForegroundColor Yellow
+    $table += [PSCustomObject]@{ Command = "f"; Description = "- Search file using fzf and bat preview" }
+    $table += [PSCustomObject]@{ Command = "cdf"; Description = "- Change directory to the parent of the file using fzf" }
+    $table += [PSCustomObject]@{ Command = "batf"; Description = "- Search with fzf nad open file using bat" }
+    $table += [PSCustomObject]@{ Command = "nvimf"; Description = "- Search and open file using nvim" }
+    $table += [PSCustomObject]@{ Command = "vimf"; Description = "- Search and open file using vim" }
+
+# Muestra la tabla con colores
+   Write-Host " " -ForegroundColor Gray
+   Write-Host "Command | Description" -ForegroundColor Green
+   Write-Host "-----------------------------" -ForegroundColor Gray
+   foreach ($row in $table) {
+        # Escribe el comando en color cian
+        Write-Host -NoNewline (" " + $row.Command + "`t ") -ForegroundColor Cyan
+        
+        # Escribe la descripción en color amarillo
+        Write-Host ( $row.Description) -ForegroundColor Yellow
+        
+        # Separador
+        Write-Host " " -ForegroundColor Gray
+    }
 }
 
 $env:BAT_THEME= "OneHalfDark"
