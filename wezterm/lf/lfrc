@@ -1,0 +1,22 @@
+set previewer bat
+set hidden
+set incsearch
+set number
+set relativenumber
+set wrapscan
+set icons true
+set drawbox
+# Open (uses the above-defined command)
+map o open $fx
+map <enter> open $fx
+# Open containing dir
+map O $open $(dirname $f)
+
+map v open neovide $fx
+
+# Show help
+map ? $lf -doc | $PAGER; clear
+
+# Otras configuraciones opcionales
+file_icons:
+  enable: true           # Habilitar iconos de archivos
