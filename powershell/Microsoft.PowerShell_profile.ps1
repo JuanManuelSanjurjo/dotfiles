@@ -36,6 +36,7 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
+
 function f {
   fzf --reverse --border=rounded --height=95%  --preview 'bat --color=always --style=numbers --line-range :500 {}' --preview-window right:50% $args
 }
@@ -54,6 +55,27 @@ function cdf{
   cd (Split-Path -Path (f) -Parent)
 }
 
+# Alias para yazi cambia el cwd a la carpeta de la seleccionada cuando se sale de yazi
+function yy {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath $cwd
+    }
+    Remove-Item -Path $tmp
+}
+
+function lfcd {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    lf $args --last-dir-path="$tmp"
+    $cwd = Get-Content -Path $tmp
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath $cwd
+    }
+    Remove-Item -Path $tmp
+}
+
 # help or man function to explain function above
 function macros {
     # Crea una lista de objetos personalizados
@@ -66,6 +88,9 @@ function macros {
     $table += [PSCustomObject]@{ Command = "batf"; Description = "- Search with fzf nad open file using bat" }
     $table += [PSCustomObject]@{ Command = "nvimf"; Description = "- Search and open file using nvim" }
     $table += [PSCustomObject]@{ Command = "vimf"; Description = "- Search and open file using vim" }
+    $table += [PSCustomObject]@{ Command = "yy"; Description = "- Change directory on quit using Yazi" }
+    $table += [PSCustomObject]@{ Command = "lfcd"; Description = "- Change directory on quit using LF" }
+  
 
 # Muestra la tabla con colores
    Write-Host " " -ForegroundColor Gray
@@ -82,6 +107,7 @@ function macros {
         Write-Host " " -ForegroundColor Gray
     }
 }
+
 
 $env:BAT_THEME= "OneHalfDark"
 
