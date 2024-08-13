@@ -4,13 +4,18 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- desabilita la barra de pestañas
+-- config.enable_tab_bar = false
+-- config.hide_tab_bar_if_only_one_tab = true
+-- config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = true
+
 config.initial_cols = 140
 config.initial_rows = 30
 config.color_scheme = "catppuccin-mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
 config.default_prog = { "powershell.exe" }
 config.window_background_opacity = 0.95
-config.text_background_opacity = 0.3
 config.font_size = 12
 config.window_frame = {
 	-- inactive_titlebar_bg = "#353535",
@@ -32,16 +37,11 @@ config.window_frame = {
 	-- border_bottom_color = "purple",
 	-- border_top_color = "purple",
 }
--- desabilita la barra de pestañas
--- config.enable_tab_bar = false
-config.use_fancy_tab_bar = true
--- config.tab_bar_at_bottom = true
--- config.hide_tab_bar_if_only_one_tab = true
 
 -- You can also change the window decorations:
 config.window_decorations = "RESIZE"
 config.window_padding = {
-	-- top = 0,
+	top = 0,
 	right = 0,
 	bottom = 0,
 	left = 0,
@@ -54,6 +54,5 @@ config.keys = {
 	},
 }
 
---  return the configuration to wezterm
+-- return the configuration to wezterm
 return config
-
