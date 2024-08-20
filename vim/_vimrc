@@ -1,4 +1,22 @@
-activar números de línea relativos
+" Seteo de tecla Lider
+let mapleader = " "
+let mayúsculasqdd
+function! ToggleExplorer()
+  " Verifica si el explorador de archivos está abierto
+  if exists("t:netrw_buf") && bufwinnr(t:netrw_buf) != -1
+    " Cierra el explorador de archivos
+    execute 'bd ' . t:netrw_buf
+    unlet t:netrw_buf
+  else
+    " Abre el explorador de archivos y guarda el buffer ID
+    Explore
+    let t:netrw_buf = bufnr("%")
+  endif
+endfunction
+
+nnoremap <Leader>e :call ToggleExplorer()<CR>
+
+" Activar números de línea relativos
 set relativenumber
 set number
 
@@ -73,4 +91,3 @@ autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 set mouse=a  " Activar el soporte del ratón
 set scrolloff=8  " Mantener 8 líneas visibles por encima y por debajo del cursor
 set signcolumn=yes  " Siempre mostrar la columna de signos
-
