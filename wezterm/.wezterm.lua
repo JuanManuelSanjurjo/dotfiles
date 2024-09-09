@@ -14,7 +14,9 @@ config.initial_cols = 140
 config.initial_rows = 30
 config.color_scheme = "catppuccin-mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
-config.default_prog = { "powershell.exe" }
+-- config.default_prog = { "powershell.exe" }
+-- config.default_prog = { "C:/Program Files/PowerShell/7/pwsh.exe" }
+config.default_prog = {'wsl','~','--cd', '/mnt/c/Users/juanm/Desktop'}
 config.window_background_opacity = 0.95
 config.font_size = 12
 config.window_frame = {
