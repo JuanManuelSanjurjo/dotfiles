@@ -9,4 +9,7 @@ with the config file provided here
 
 ### Tmux
 Install TPM plugin manager for tmux on `~/.tmux/plugins/tpm`
+
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+
+Install plugins from config with `Leader + I`
