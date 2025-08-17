@@ -1,5 +1,23 @@
+" Basic config
+set mouse=a
+set nocompatible
+set clipboard=unnamedplus
+set t_Co=256
+set laststatus=2
+
 " Seteo de tecla Lider
-let mapleader = " "
+let mapleader=" "
+
+" Plugins
+" call plug#begin()
+
+" List your plugins here
+" Plug 'vim-airline/vim-airline'
+" Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf.vim'
+" Plug 'sheerun/vim-polyglot'
+" A
+" call plug#end()
 
 function! ToggleExplorer()
   " Verifica si el explorador de archivos está abierto
@@ -9,22 +27,42 @@ function! ToggleExplorer()
     unlet t:netrw_buf
   else
     " Abre el explorador de archivos y guarda el buffer ID
-    Explore
+    Lexplore!
     let t:netrw_buf = bufnr("%")
   endif
 endfunction
 
+" Abrir o cerrar la terminal con Ctrl + /
+
+function! ToggleTerminal()
+  if exists("t:term_buf") && bufexists(t:term_buf)
+    " Si la terminal está abierta, ciérrala
+    exec 'bdelete! ' . t:term_buf
+    unlet t:term_buf
+  else
+    " Si la terminal no está abierta, ábrela en una nueva ventana
+    split
+    resize 10
+    terminal
+    let t:term_buf = bufnr('%')
+  endif
+endfunction
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+
 let g:netrw_winsize = 20
 
+
+nnoremap <Leader>t :terminal<CR>
 nnoremap <Leader>e :call ToggleExplorer()<cr>
 nnoremap <Leader>l :Lex<cr>
+nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " Activar números de línea relativos
 set relativenumber
 set number
+
 
 " Establecer el esquema de color
 " colorscheme xoria256
@@ -32,17 +70,31 @@ set number
 " colorscheme oceanblack
 " colorscheme blacksea
 " colorscheme railscasts
+" colorscheme asu1dark
+" colorscheme bluegreen
+" colorscheme brookstream
+" colorscheme calmar256-dark
+" colorscheme candy
+" colorscheme candycode
+" colorscheme darkbone
+" colorscheme desert256
+" colorscheme dw_cyan green orange purple yellow red blue
+" colorscheme jellybeans
+" colorscheme matrix
+" colorscheme rootwater
+" colorscheme tir_black
 colorscheme tango
+" set termguicolors
+" highlight Normal guibg=none
+" highlight NormalFloat guibg=none
+" highlight NonText guibg=none
 
 " Configuración de identación
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
-set syntax
-" Activar el resaltado de sintaxis
-syntax on
 
 " Mostrar la línea de comando mientras se digita un comando incompleto
 " set showcmd
@@ -59,7 +111,6 @@ set smartcase
 " Deshabilitar los sonidos de error
 set noerrorbells
 set novisualbell
-set t_vb=
 
 " Habilitar el portapapeles del sistema
 set clipboard=unnamedplus
@@ -108,3 +159,5 @@ autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 set mouse=a  " Activar el soporte del ratón
 set scrolloff=8  " Mantener 8 líneas visibles por encima y por debajo del cursor
 set signcolumn=no  " No mostrar la columna de signo
+
+

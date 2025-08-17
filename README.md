@@ -34,6 +34,7 @@ the `--adopt` flag will overwrite any existing files in your home directory with
 - btop
 - posting (terminal http client) curl
 - ranger / yazi / superfile / mc / nnn (file managers)
+- tgpt (terminal ai chat client / no api required)
 
 #### Get the list of packages installed manually via apt o pacman
 
