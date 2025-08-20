@@ -8,6 +8,8 @@ This will create a symlink to the dotfiles in your home directory and will updat
 
 the `--adopt` flag will overwrite any existing files in your home directory with the files in the dotfiles repo.
 
+To stow only a single file or directory use `stow [directory/file]` ex: `stow .bashrc`
+
 ## Software to install
 
 ### Core
@@ -22,7 +24,8 @@ the `--adopt` flag will overwrite any existing files in your home directory with
 
 ### Utilities
 
-- bat
+- batcat
+- luarocks
 - less
 - exa
 - fd
@@ -33,8 +36,7 @@ the `--adopt` flag will overwrite any existing files in your home directory with
 - neofetch
 - btop
 - posting (terminal http client) curl
-- ranger / yazi / superfile / mc / nnn (file managers)
-- tgpt (terminal ai chat client / no api required)
+- ranger / superfile / mc / nnn (file managers)
 
 #### Get the list of packages installed manually via apt o pacman
 
@@ -44,6 +46,5 @@ APT:
 PACMAN:
 `pacman -Qe`
 
-CURRENT LIST:
-bash-completion bat btop cargo curl diffutils exa fdclone fd-find ffmpeg findutils fish fzf gh grep gzip luarocks mc neofetch neovim nnn ranger ripgrep stow tmux tree zoxide
-zsh
+CURRENT LIST OF PACKAGES:
+bash-completion bat btop cargo cmatrix diffutils exa fdclone fd-find ffmpeg findutils fish fzf gh grep gzip jq luajit neofetch neovim nnn ranger ripgrep stow tmux tree vim zip zoxide zsh

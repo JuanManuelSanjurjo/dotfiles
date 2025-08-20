@@ -61,8 +61,6 @@ alias nvim-kick="NVIM_APPNAME=kickstart nvim"
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 alias nvimc="nvim --clean"
-alias chat="tgpt -i"
-alias chatm="tgpt -m"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -147,18 +145,6 @@ nvims() {
 	NVIM_APPNAME=$config nvim "$@"
 }
 
-chats() {
-	items=("default" "blackboxai" "deepseek" "duckduckgo" "pollinations" "isou" "koboldai")
-	config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Select Ai provider: " --reverse --border=rounded --height=20% --exit-0)
-	if [[ -z "$config" ]]; then
-		echo "No provider selected"
-		return 0
-	elif [[ $config == "default" ]]; then
-		config=""
-	fi
-	chat --provider $config "$@"
-}
-
 # Opens tmuxifier session with nvim/terminal/lazygit layout
 editor() {
 	tmuxifier s nvim2term
@@ -167,27 +153,6 @@ editor() {
 # Configurar tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
-# Alias para yazi que cambia el directorio al salir
-# yy() {
-#   tmp=$(mktemp)
-#   yazi "$@" --cwd-file="$tmp"
-#   cwd=$(cat "$tmp")
-#   if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
-#     cd "$cwd"
-#   fi
-#   rm -f "$tmp"
-# }
-#
-# # Alias para lf que cambia el directorio al salir
-# lfcd() {
-#   tmp=$(mktemp)
-#   lf "$@" --last-dir-path="$tmp"
-#   cwd=$(cat "$tmp")
-#   if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
-#     cd "$cwd"
-#   fi
-#   rm -f "$tmp"
-# }
 
 # Mostrar una lista de macros disponibles
 macros() {
@@ -206,10 +171,10 @@ macros() {
 	echo " nvimf    - Search and open file using nvim"
 	echo " tf       - Run tmuxifier"
 	echo " vimf     - Search and open file using vim"
-	echo " yy       - Change directory on quit using Yazi"
 	echo " lfcd     - Change directory on quit using LF"
 	echo " rg       - Search with ripgrep case insensitive"
 	echo " editor   - Opens tmuxifier session with nvim/terminal/lazygit layout "
+	echo " nvims    - Opens fzf dialog to choose config "
 	echo " open     - Opens selected folder in explorer.exe with zi"
 }
 
